@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://springAsyncView.title">
+    <layout>
+        <textField id="firstField" label="Type first parameter"/>
+        <textField id="secondField" label="Type second parameter"/>
+        <textField id="thirdField" label="Type third parameter"/>
+
+        <button id="callAsyncBean" text="Call"/>
+        <button id="select" text="Select"/>
+    </layout>
+</view>

@@ -6,7 +6,9 @@
     <data>
         <collection id="newEntitiesDc"
                     class="com.company.demo.entity.NewEntity">
-            <fetchPlan extends="_base"/>
+            <fetchPlan extends="_base">
+                <property name="creator" fetchPlan="_base"/>
+            </fetchPlan>
             <loader id="newEntitiesDl" readOnly="true">
                 <query>
                     <![CDATA[select e from NewEntity e]]>
@@ -20,6 +22,7 @@
             <genericFilter component="genericFilter"/>
             <pagination component="pagination"/>
         </urlQueryParameters>
+        <timer id="timer" delay="3000" autostart="true" repeating="true"/>
     </facets>
     <actions>
         <action id="selectAction" type="lookup_select"/>
@@ -36,6 +39,8 @@
             <button id="removeButton" action="newEntitiesDataGrid.remove"/>
             <button id="navigateBtn" text="Navigate"/>
             <button id="dialogBtn" text="Dialog"/>
+            <button id="lookupButton" action="selectAction"/>
+            <button id="showBtn" action="newEntitiesDataGrid.showNtf"/>
             <simplePagination id="pagination" dataLoader="newEntitiesDl"/>
         </hbox>
         <dataGrid id="newEntitiesDataGrid"
@@ -44,6 +49,7 @@
                   dataContainer="newEntitiesDc"
                   columnReorderingAllowed="true">
             <actions>
+                <action id="showNtf" text="Show" icon="PLUS"/>
                 <action id="create" type="list_create">
                     <properties>
                         <property name="openMode" value="DIALOG"/>
@@ -59,6 +65,7 @@
             <columns resizable="true">
                 <column property="name"/>
                 <column property="secondField"/>
+                <column property="creator"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

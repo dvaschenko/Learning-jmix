@@ -4,6 +4,13 @@
     <menu id="application" title="msg://com.company.demo/menu.application.title" opened="true">
         <item view="User.list" title="msg://com.company.demo.view.user/UserListView.title"/>
         <item view="NewEntity.list" title="msg://com.company.demo.view.newentity/newEntityListView.title"/>
+        <item view="SpringAsyncView" description="msg://com.company.demo/menu_config.SpringAsyncView.description"
+              title="msg://com.company.demo/menu_config.SpringAsyncView.title"/>
+        <item view="BgTaskView" description="msg://com.company.demo/menu_config.BgTaskView.description"
+              title="msg://com.company.demo/menu_config.BgTaskView.title"/>
+        <item view="ProgrammaticView" title="msg://com.company.demo.view.programmatic/programmaticView.title"/>
+        <item view="SimpleView" title="msg://com.company.demo.view.simple/simpleView.title"/>
+
     </menu>
 
 </menu-config>

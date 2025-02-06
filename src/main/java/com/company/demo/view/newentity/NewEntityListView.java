@@ -5,9 +5,14 @@ import com.company.demo.view.main.MainView;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.router.Route;
 import io.jmix.flowui.DialogWindows;
+import io.jmix.flowui.Notifications;
 import io.jmix.flowui.ViewNavigators;
+import io.jmix.flowui.component.grid.DataGrid;
+import io.jmix.flowui.facet.Timer;
 import io.jmix.flowui.kit.component.button.JmixButton;
+import io.jmix.flowui.model.CollectionContainer;
 import io.jmix.flowui.model.CollectionLoader;
+import io.jmix.flowui.model.DataContext;
 import io.jmix.flowui.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,6 +30,12 @@ public class NewEntityListView extends StandardListView<NewEntity> {
     private DialogWindows dialogWindows;
     @ViewComponent
     private CollectionLoader<NewEntity> newEntitiesDl;
+    @ViewComponent
+    private DataGrid<NewEntity> newEntitiesDataGrid;
+    @Autowired
+    private Notifications notifications;
+    @ViewComponent
+    private CollectionContainer<NewEntity> newEntitiesDc;
 
     @Subscribe(id = "navigateBtn", subject = "clickListener")
     public void onNavigateBtnClick(final ClickEvent<JmixButton> event) {
@@ -35,11 +46,19 @@ public class NewEntityListView extends StandardListView<NewEntity> {
 
     @Subscribe(id = "dialogBtn", subject = "clickListener")
     public void onDialogBtnClick(final ClickEvent<JmixButton> event) {
+        NewEntity selected = newEntitiesDataGrid.getSingleSelectedItem();
+
         dialogWindows.detail(this, NewEntity.class)
                 .newEntity()
                 .open();
 
+//        newEntitiesDl.load();
+    }
+
+    @Subscribe("timer")
+    public void onTimerTimerAction(final Timer.TimerActionEvent event) {
         newEntitiesDl.load();
+        notifications.show("Updated");
     }
 
 
