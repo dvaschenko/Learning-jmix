@@ -20,7 +20,7 @@
         </dataLoadCoordinator>
     </facets>
     <actions>
-        <action id=""></action>
+        <action id="close" type="look"></action>
     </actions>
     <layout>
         <dataGrid id="newEntitiesDataGrid" dataContainer="newEntitiesDc" minWidth="100px" width="100%">

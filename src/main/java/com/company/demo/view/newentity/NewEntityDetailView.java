@@ -44,4 +44,18 @@ public class NewEntityDetailView extends StandardDetailView<NewEntity> {
     private void doSome() {
 
     }
+
+    @Subscribe
+    public void onReady(final ReadyEvent event) {
+        NewEntity passedAndReloaded = getEditedEntity();
+    }
+
+    @Subscribe
+    public void onInitEntity(final InitEntityEvent<NewEntity> event) {
+        NewEntity created = event.getEntity();
+    }
+    
+    
+
+
 }

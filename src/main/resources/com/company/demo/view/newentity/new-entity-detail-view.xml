@@ -6,10 +6,18 @@
         <instance id="newEntityDc"
                   class="com.company.demo.entity.NewEntity">
             <fetchPlan extends="_base">
-                <property name="creator" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
         </instance>
+        <collection id="usersDc" class="com.company.demo.entity.User">
+            <loader id="usersDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from User e]]>
+                </query>
+            </loader>
+            <fetchPlan extends="_base"/>
+        </collection>
+
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -26,12 +34,12 @@
             </responsiveSteps>
             <textField id="nameField" property="name"/>
             <textField id="secondFieldField" property="secondField"/>
-            <entityPicker id="creatorField" property="creator">
+            <entityComboBox id="creatorField" property="creator" itemsContainer="usersDc">
                 <actions>
                     <action id="entityLookup" type="entity_lookup"/>
                     <action id="entityClear" type="entity_clear"/>
                 </actions>
-            </entityPicker>
+            </entityComboBox>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>

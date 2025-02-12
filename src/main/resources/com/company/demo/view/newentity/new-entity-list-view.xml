@@ -27,6 +27,7 @@
     <actions>
         <action id="selectAction" type="lookup_select"/>
         <action id="discardAction" type="lookup_discard"/>
+        <action id="viewClose" type="view_close" />
     </actions>
     <layout>
         <genericFilter id="genericFilter"
@@ -41,6 +42,7 @@
             <button id="dialogBtn" text="Dialog"/>
             <button id="lookupButton" action="selectAction"/>
             <button id="showBtn" action="newEntitiesDataGrid.showNtf"/>
+            <button id="copyBtn" action="newEntitiesDataGrid.copyAction"/>
             <simplePagination id="pagination" dataLoader="newEntitiesDl"/>
         </hbox>
         <dataGrid id="newEntitiesDataGrid"
@@ -61,6 +63,7 @@
                     </properties>
                 </action>
                 <action id="remove" type="list_remove"/>
+                <action id="copyAction" text="Copy" type="list_itemTracking"/>
             </actions>
             <columns resizable="true">
                 <column property="name"/>
@@ -68,6 +71,7 @@
                 <column property="creator"/>
             </columns>
         </dataGrid>
+        <checkbox id="myBox" label="My box"/>
         <hbox id="lookupActions" visible="false">
             <button id="selectButton" action="selectAction"/>
             <button id="discardButton" action="discardAction"/>

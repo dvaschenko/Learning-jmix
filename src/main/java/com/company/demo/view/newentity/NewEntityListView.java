@@ -4,11 +4,14 @@ import com.company.demo.entity.NewEntity;
 import com.company.demo.view.main.MainView;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.router.Route;
+import io.jmix.core.DataManager;
+import io.jmix.core.MetadataTools;
 import io.jmix.flowui.DialogWindows;
 import io.jmix.flowui.Notifications;
 import io.jmix.flowui.ViewNavigators;
 import io.jmix.flowui.component.grid.DataGrid;
 import io.jmix.flowui.facet.Timer;
+import io.jmix.flowui.kit.action.ActionPerformedEvent;
 import io.jmix.flowui.kit.component.button.JmixButton;
 import io.jmix.flowui.model.CollectionContainer;
 import io.jmix.flowui.model.CollectionLoader;
@@ -36,6 +39,10 @@ public class NewEntityListView extends StandardListView<NewEntity> {
     private Notifications notifications;
     @ViewComponent
     private CollectionContainer<NewEntity> newEntitiesDc;
+    @Autowired
+    private MetadataTools metadataTools;
+    @Autowired
+    private DataManager dataManager;
 
     @Subscribe(id = "navigateBtn", subject = "clickListener")
     public void onNavigateBtnClick(final ClickEvent<JmixButton> event) {
@@ -55,10 +62,24 @@ public class NewEntityListView extends StandardListView<NewEntity> {
 //        newEntitiesDl.load();
     }
 
-    @Subscribe("timer")
-    public void onTimerTimerAction(final Timer.TimerActionEvent event) {
-        newEntitiesDl.load();
-        notifications.show("Updated");
+//    @Subscribe("timer")
+//    public void onTimerTimerAction(final Timer.TimerActionEvent event) {
+//        newEntitiesDl.load();
+//        notifications.show("Updated");
+//    }
+
+    @Subscribe("newEntitiesDataGrid.copyAction")
+    public void onNewEntitiesDataGridCopyAction(final ActionPerformedEvent event) {
+        NewEntity toCopy = newEntitiesDataGrid.getSingleSelectedItem();
+        if (toCopy == null) {
+            return;
+        }
+
+        NewEntity copy = metadataTools.copy(toCopy);
+
+        dialogWindows.detail(newEntitiesDataGrid)
+                .newEntity(copy)
+                .open();
     }
 
 
