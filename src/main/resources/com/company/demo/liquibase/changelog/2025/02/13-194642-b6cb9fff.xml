@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="demo">
+        <createTable tableName="PROJECT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PROJECT"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="TASKS_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="demo">
+        <createTable tableName="TASK_">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TASK_"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="EFFORTS" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="demo">
+        <addForeignKeyConstraint baseColumnNames="TASKS_ID" baseTableName="PROJECT" constraintName="FK_PROJECT_ON_TASKS"
+                                 referencedColumnNames="ID" referencedTableName="TASK_"/>
+    </changeSet>
+</databaseChangeLog>

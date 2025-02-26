@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://projectDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="projectDc"
+                  class="com.company.demo.entity.Project">
+            <fetchPlan extends="_base">
+                <property name="tasks" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="projectDl"/>
+        </instance>
+        <collection id="tasksDc" class="com.company.demo.entity.Task">
+            <fetchPlan extends="_base">
+                <property name="project" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="tasksDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from Task_ e where e.project = :container_projectDc]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="projectDc">
+            <responsiveSteps>
+                <responsiveStep minWidth="0" columns="1"/>
+                <responsiveStep minWidth="40em" columns="2"/>
+            </responsiveSteps>
+            <textField id="nameField" property="name"/>
+            <checkbox id="isRunningField" property="isRunning"/>
+        </formLayout>
+        <dataGrid id="tasksDataGrid" dataContainer="tasksDc" minWidth="100px" width="100%">
+            <actions/>
+            <columns>
+                <column property="name"/>
+                <column property="efforts"/>
+                <column property="project"/>
+            </columns>
+        </dataGrid>
+        <hbox id="detailActions">
+            <button id="saveAndCloseButton" action="saveAction"/>
+            <button id="closeButton" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

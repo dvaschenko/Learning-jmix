@@ -57,13 +57,13 @@
                 <action id="resetPassword" type="sec_resetPassword"/>
                 <action id="showUserSubstitutions" type="sec_showUserSubstitutions"/>
             </actions>
-            <columns resizable="true">
-                <column property="username"/>
-                <column property="firstName"/>
-                <column property="lastName"/>
+            <columns resizable="true" >
+                <column property="username" flexGrow="2"/>
+                <column property="firstName" width="50%"/>
+                <column property="lastName" header=" " />
                 <column property="email"/>
-                <column property="timeZoneId"/>
-                <column property="active"/>
+                <column property="timeZoneId" visible="false"/>
+                <column property="active" width="AUTO" flexGrow="0"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

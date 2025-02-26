@@ -10,6 +10,13 @@
               title="msg://com.company.demo/menu_config.BgTaskView.title"/>
 <!--        <item view="ProgrammaticView" title="msg://com.company.demo.view.programmatic/programmaticView.title"/>-->
         <item view="SimpleView" title="msg://com.company.demo.view.simple/simpleView.title"/>
+        <item view="Project.list" title="msg://com.company.demo.view.project/projectListView.title"/>
+        <item view="Task_.list" title="msg://com.company.demo.view.task/taskListView.title"
+              shortcutCombination="CTRL + ALT + E">
+            <urlQueryParameters>
+                <parameter name="project_id" value="project 1"/>
+            </urlQueryParameters>
+        </item>
 
     </menu>
 
