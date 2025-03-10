@@ -4,6 +4,7 @@ import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
@@ -22,8 +23,10 @@ public class Task {
     private String name;
     @Column(name = "EFFORTS")
     private Integer efforts;
-    @JoinColumn(name = "PROJECT_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @NotNull
+    @JoinColumn(name = "PROJECT_ID", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Project project;
 
     public Project getProject() {

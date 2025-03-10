@@ -37,8 +37,20 @@
             <textField id="nameField" property="name"/>
             <checkbox id="isRunningField" property="isRunning"/>
         </formLayout>
+        <h4 text="Tasks"/>
         <dataGrid id="tasksDataGrid" dataContainer="tasksDc" minWidth="100px" width="100%">
-            <actions/>
+            <actions>
+                <action id="create" type="list_create">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
+                <action id="edit" type="list_edit">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
+            </actions>
             <columns>
                 <column property="name"/>
                 <column property="efforts"/>
