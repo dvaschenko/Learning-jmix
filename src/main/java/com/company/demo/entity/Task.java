@@ -3,6 +3,7 @@ package com.company.demo.entity;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import io.jmix.core.metamodel.annotation.JmixProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -59,5 +60,10 @@ public class Task {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    @JmixProperty
+    public String getConcat() {
+        return this.name + this.efforts;
     }
 }

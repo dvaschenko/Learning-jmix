@@ -2,8 +2,13 @@ package com.company.demo.view.task;
 
 import com.company.demo.entity.Task;
 import com.company.demo.view.main.MainView;
+import com.vaadin.flow.component.grid.ItemClickEvent;
+import com.vaadin.flow.data.renderer.Renderer;
+import com.vaadin.flow.data.renderer.TextRenderer;
 import com.vaadin.flow.router.QueryParameters;
 import com.vaadin.flow.router.Route;
+import io.jmix.flowui.component.grid.DataGrid;
+import io.jmix.flowui.component.grid.DataGridColumn;
 import io.jmix.flowui.view.*;
 
 
@@ -13,11 +18,15 @@ import io.jmix.flowui.view.*;
 @LookupComponent("tasksDataGrid")
 @DialogMode(width = "64em")
 public class TaskListView extends StandardListView<Task> {
+    @ViewComponent
+    private DataGrid<Task> tasksDataGrid;
+
     @Subscribe
     public void onQueryParametersChange(final QueryParametersChangeEvent event) {
         QueryParameters queryParameters = event.getQueryParameters();
         queryParameters.getParameters().get("project_id");
 
     }
+
     
 }
