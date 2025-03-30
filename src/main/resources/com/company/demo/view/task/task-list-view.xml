@@ -53,11 +53,16 @@
                 <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
-<!--                <column property="name"/>-->
-<!--                <column property="efforts"/>-->
+                <column property="name"/>
+                <column property="efforts"/>
                 <column key="result"/>
-                <column property="project"/>
+                <column property="project" editable="true"/>
                 <column property="concat"/>
+                <editorActionsColumn>
+                    <editButton shortcutCombination="ALT-ENTER"/>
+                    <closeButton shortcutCombination="ESCAPE"/>
+                </editorActionsColumn>
+                <column property="status"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

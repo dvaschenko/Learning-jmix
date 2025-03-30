@@ -7,6 +7,9 @@
                   class="com.company.demo.entity.Task">
             <fetchPlan extends="_base">
                 <property name="project" fetchPlan="_base"/>
+                <property name="author" fetchPlan="_base"/>
+                <property name="peformer" fetchPlan="_base"/>
+                <property name="controller" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="taskDl"/>
         </instance>
@@ -27,6 +30,25 @@
             <textField id="nameField" property="name"/>
             <textField id="effortsField" property="efforts"/>
             <entityPicker id="projectField" property="project">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <select id="statusField" property="status"/>
+            <entityPicker id="authorField" property="author">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <entityPicker id="peformerField" property="peformer">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <entityPicker id="controllerField" property="controller">
                 <actions>
                     <action id="entityLookup" type="entity_lookup"/>
                     <action id="entityClear" type="entity_clear"/>

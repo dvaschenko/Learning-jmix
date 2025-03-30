@@ -2,6 +2,7 @@ package com.company.demo.view.task;
 
 import com.company.demo.entity.Task;
 import com.company.demo.view.main.MainView;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.grid.ItemClickEvent;
 import com.vaadin.flow.data.renderer.Renderer;
 import com.vaadin.flow.data.renderer.TextRenderer;
@@ -27,6 +28,19 @@ public class TaskListView extends StandardListView<Task> {
         queryParameters.getParameters().get("project_id");
 
     }
+
+    @Install(to = "tasksDataGrid.project", subject = "partNameGenerator")
+    private String tasksDataGridProjectPartNameGenerator(final Task task) {
+        return "styled-cell";
+    }
+
+    @Subscribe
+    public void onReady(final ReadyEvent event) {
+        DataGridColumn<Task> columnByKey = tasksDataGrid.getColumnByKey("project");
+        Component editorComponent = columnByKey.getEditorComponent();
+    }
+
+    
 
     
 }

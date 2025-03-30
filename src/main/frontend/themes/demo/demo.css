@@ -1,1 +1,8 @@
 /* Define your styles here */
+
+vaadin-grid::part(styled-cell){
+  color: red;
+  border: 1px solid black;
+  m-0;
+
+}
