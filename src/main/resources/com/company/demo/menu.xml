@@ -17,6 +17,7 @@
                 <parameter name="project_id" value="project 1"/>
             </urlQueryParameters>
         </item>
+        <item view="Client.list" title="msg://com.company.demo.view.client/clientListView.title"/>
 
     </menu>
 

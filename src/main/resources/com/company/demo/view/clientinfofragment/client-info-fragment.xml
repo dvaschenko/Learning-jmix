@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/flowui/fragment">
+    <data>
+        <collection id="clientsDc"
+                    class="com.company.demo.entity.Client"
+                    provided="true">
+            <loader id="clientsDl" readOnly="true"/>
+        </collection>
+    </data>
+    <content>
+        <vbox id="root">
+           <hbox id="mainBox" padding="false" classNames="rounded-m m-s shadow-s" width="100%">
+               <avatar id="clientAvatar"/>
+               <vbox id="infoBox" padding="false">
+                   <textField id="nameField" dataContainer="clientsDc" property="name" classNames="font-bold"/>
+
+               </vbox>
+           </hbox>
+        </vbox>
+    </content>
+</fragment>

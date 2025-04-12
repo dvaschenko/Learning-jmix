@@ -21,7 +21,7 @@
         <dataLoadCoordinator auto="true"/>
         <urlQueryParameters>
             <genericFilter component="genericFilter"/>
-            <pagination component="pagination"/>
+<!--            <pagination component="pagination"/>-->
         </urlQueryParameters>
     </facets>
     <layout>
@@ -41,7 +41,8 @@
                     <actionItem id="showUserSubstitutionsItem" ref="usersDataGrid.showUserSubstitutions"/>
                 </items>
             </dropdownButton>
-            <simplePagination id="pagination" dataLoader="usersDl"/>
+            <button id="genUsers" text="Generate"/>
+            <simplePagination id="pagination" dataLoader="usersDl" itemsPerPageUnlimitedItemVisible="true"/>
         </hbox>
         <dataGrid id="usersDataGrid"
                   width="100%"

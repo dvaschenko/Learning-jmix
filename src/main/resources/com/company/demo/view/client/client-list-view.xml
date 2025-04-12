@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://clientListView.title"
+      focusComponent="clientsList">
+    <data>
+        <collection id="clientsDc"
+                    class="com.company.demo.entity.Client">
+            <fetchPlan extends="_base"/>
+            <loader id="clientsDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from Client e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="clientsDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" text="msg:///actions.Create" icon="PLUS" themeNames="primary"/>
+            <simplePagination id="pagination" dataLoader="clientsDl" itemsPerPageUnlimitedItemVisible="true"/>
+        </hbox>
+<!--        <virtualList id="clientsList" itemsContainer="clientsDc"/>-->
+        <fragment class="com.company.demo.view.clientinfofragment.ClientInfoFragment"/>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectButton" action="selectAction"/>
+            <button id="discardButton" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>
