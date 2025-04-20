@@ -36,6 +36,11 @@
             </responsiveSteps>
             <textField id="nameField" property="name"/>
             <checkbox id="isRunningField" property="isRunning"/>
+
+            <hbox>
+                <fileStorageUploadField id="attachmentField" property="attachment" fileNameVisible="true" />
+                <button id="clearFile" text="Clear and delete"/>
+            </hbox>
         </formLayout>
         <h4 text="Tasks"/>
         <dataGrid id="tasksDataGrid" dataContainer="tasksDc" minWidth="100px" width="100%">

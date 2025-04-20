@@ -18,6 +18,8 @@
             </urlQueryParameters>
         </item>
         <item view="Client.list" title="msg://com.company.demo.view.client/clientListView.title"/>
+        <item view="ProjectStats.list" title="msg://com.company.demo.view.projectstats/projectStatsListView.title"/>
+        <item view="KeyValueStatsView" title="msg://com.company.demo.view.keyvaluestats/keyValueStatsView.title"/>
 
     </menu>
 

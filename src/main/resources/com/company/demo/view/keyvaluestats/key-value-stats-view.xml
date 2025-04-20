@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://keyValueStatsView.title">
+    <data>
+        <keyValueCollection id="statsDc">
+            <loader id="statsDl">
+                <query>
+                    <![CDATA[select p, COUNT(p.tasks) from Project p group by p]]>
+                </query>
+            </loader>
+            <properties>
+                <property name="project" class="com.company.demo.entity.Project"/>
+                <property name="tasksCount" datatype="long"/>
+            </properties>
+        </keyValueCollection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <dataGrid id="keyValueEntitiesDataGrid" dataContainer="statsDc" minWidth="100px" width="100%">
+            <actions/>
+            <columns>
+                <column property="project.name"/>
+                <column property="tasksCount"/>
+            </columns>
+        </dataGrid>
+
+    </layout>
+</view>

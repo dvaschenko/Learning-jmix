@@ -1,5 +1,6 @@
 package com.company.demo.entity;
 
+import io.jmix.core.FileRef;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.InstanceName;
@@ -27,6 +28,17 @@ public class Project {
     @Column(name = "IS_RUNNING", nullable = false)
     @NotNull
     private Boolean isRunning = false;
+
+    @Column(name = "ATTACHMENT", length = 1024)
+    private FileRef attachment;
+
+    public FileRef getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(FileRef attachment) {
+        this.attachment = attachment;
+    }
 
     public Boolean getIsRunning() {
         return isRunning;

@@ -1,6 +1,7 @@
 package com.company.demo.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.Comment;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import io.jmix.core.metamodel.annotation.JmixProperty;
@@ -28,9 +29,12 @@ public class Task {
     @JoinColumn(name = "PEFORMER_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private User peformer;
+
+    @Comment("some")
     @JoinColumn(name = "CONTROLLER_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private User controller;
+
     @Column(name = "STATUS")
     private String status;
     @InstanceName
