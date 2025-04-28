@@ -34,7 +34,7 @@
             <button id="createBtn" text="msg:///actions.Create" icon="PLUS" themeNames="primary"/>
             <simplePagination id="pagination" dataLoader="clientsDl" itemsPerPageUnlimitedItemVisible="true"/>
         </hbox>
-<!--        <virtualList id="clientsList" itemsContainer="clientsDc"/>-->
+        <virtualList id="clientsList" itemsContainer="clientsDc"/>
         <fragment class="com.company.demo.view.clientinfofragment.ClientInfoFragment"/>
         <hbox id="lookupActions" visible="false">
             <button id="selectButton" action="selectAction"/>

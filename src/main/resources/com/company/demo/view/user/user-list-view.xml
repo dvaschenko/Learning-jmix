@@ -42,12 +42,13 @@
                 </items>
             </dropdownButton>
             <button id="genUsers" text="Generate"/>
-            <simplePagination id="pagination" dataLoader="usersDl" itemsPerPageUnlimitedItemVisible="true"/>
+<!--            <simplePagination id="pagination" dataLoader="usersDl" itemsPerPageUnlimitedItemVisible="true"/>-->
         </hbox>
         <dataGrid id="usersDataGrid"
                   width="100%"
                   columnReorderingAllowed="true"
                   minHeight="20em"
+                  maxHeight="20em"
                   dataContainer="usersDc">
             <actions>
                 <action id="create" type="list_create"/>

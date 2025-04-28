@@ -5,6 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Lob;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
 
 @JmixEntity
 @Embeddable
@@ -13,6 +14,7 @@ public class ContactInformation {
     @Column(name = "EMAIL")
     private String email;
 
+    @Pattern(regexp = "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$")
     @Column(name = "PHONE")
     private String phone;
 
