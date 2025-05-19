@@ -54,30 +54,31 @@ public class UserListView extends StandardListView<User> {
     public void onInit(final InitEvent event) {
 
     }
-//
-//    @Install(to = "usersDl", target = Target.DATA_LOADER)
-//    private List<User> usersDlLoadDelegate(final LoadContext<User> loadContext) {
-//        return dataManager.load(User.class).all().maxResults(10).list();
-//    }
+
+    @Install(to = "usersDl", target = Target.DATA_LOADER)
+    private List<User> usersDlLoadDelegate(final LoadContext<User> loadContext) {
+        return dataManager.load(User.class).all().maxResults(10).list();
+    }
 
     @Subscribe
     public void onBeforeShow(final BeforeShowEvent event) {
         getElement().executeJs("""
                 let container = this;
-                let el = this.querySelector(#usersDataGrid);
+                let el = this.querySelector("#usersDataGrid");
                 let table = el.$.table;
                 table.addEventListener("scroll", function(e) {
-                    if(true) {
+                    console.log(e);
+                    if(table.scrollTop + table.clientHeight == table.scrollHeight) {
                         container.$server.loadMoreRows();
-                    }
-                });
+                        }
+                    });
                 """);
     }
 
     @ClientCallable
     public void loadMoreRows() {
         page++;
-        List<User> moreUsers = dataManager.load(User.class).all().firstResult(page*10).maxResults(10).list();
+        List<User> moreUsers = dataManager.load(User.class).all().firstResult(page * 10).maxResults(10).list();
         List<User> newUsers = new ArrayList<>();
         newUsers.addAll(usersDc.getItems());
         newUsers.addAll(moreUsers);
@@ -85,8 +86,7 @@ public class UserListView extends StandardListView<User> {
         notifications.show("Load called!");
     }
 
-    
-    
+
     @Subscribe(id = "genUsers", subject = "clickListener")
     public void onGenUsersClick(final ClickEvent<JmixButton> event) {
 
@@ -107,6 +107,4 @@ public class UserListView extends StandardListView<User> {
     }
 
 
-    
-    
 }

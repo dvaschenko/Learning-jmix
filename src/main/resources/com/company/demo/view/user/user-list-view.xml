@@ -47,8 +47,8 @@
         <dataGrid id="usersDataGrid"
                   width="100%"
                   columnReorderingAllowed="true"
-                  minHeight="20em"
-                  maxHeight="20em"
+                  minHeight="25em"
+                  maxHeight="25em"
                   dataContainer="usersDc">
             <actions>
                 <action id="create" type="list_create"/>
