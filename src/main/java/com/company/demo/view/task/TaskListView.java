@@ -4,6 +4,8 @@ import com.company.demo.entity.Task;
 import com.company.demo.view.main.MainView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.grid.ItemClickEvent;
+import com.vaadin.flow.component.textfield.TextArea;
+import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.Renderer;
 import com.vaadin.flow.data.renderer.TextRenderer;
 import com.vaadin.flow.router.QueryParameters;
@@ -38,6 +40,16 @@ public class TaskListView extends StandardListView<Task> {
     public void onReady(final ReadyEvent event) {
         DataGridColumn<Task> columnByKey = tasksDataGrid.getColumnByKey("project");
         Component editorComponent = columnByKey.getEditorComponent();
+    }
+
+    @Supply(to = "tasksDataGrid.description", subject = "renderer")
+    private Renderer<Task> tasksDataGridDescriptionRenderer() {
+        return new ComponentRenderer<>(TextArea::new, (area, task) -> {
+            area.setValue(task.getDescription() == null ? "" : task.getDescription());
+            area.getStyle().set("style", "text-wrap: wrap");
+            area.setEnabled(false);
+            area.setMaxHeight("12em");
+        });
     }
 
     

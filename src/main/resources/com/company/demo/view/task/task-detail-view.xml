@@ -54,6 +54,7 @@
                     <action id="entityClear" type="entity_clear"/>
                 </actions>
             </entityPicker>
+            <textArea id="descriptionField" property="description" placeholder="lorem"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>

@@ -37,6 +37,7 @@
             </section>
         </drawerLayout>
         <initialLayout>
+            <h2 text="WELCOME!"/>
         </initialLayout>
     </appLayout>
 </mainView>

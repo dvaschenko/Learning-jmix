@@ -48,6 +48,18 @@ public class Task {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Project project;
 
+    @Column(name = "DESCRIPTION")
+    @Lob
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public User getController() {
         return controller;
     }

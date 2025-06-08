@@ -5,6 +5,8 @@ import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.Theme;
+import io.jmix.core.FileStorage;
+import io.jmix.localfs.LocalFileStorage;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -53,5 +55,10 @@ public class DemoApplication implements AppShellConfigurator {
                 + "http://localhost:"
                 + environment.getProperty("local.server.port")
                 + Strings.nullToEmpty(environment.getProperty("server.servlet.context-path")));
+    }
+
+    @Bean
+    FileStorage myFileStorage() {
+        return new LocalFileStorage("myfs", "/var/tmp/myfs");
     }
 }

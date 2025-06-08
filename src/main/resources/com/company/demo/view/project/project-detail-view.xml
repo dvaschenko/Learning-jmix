@@ -29,19 +29,26 @@
         <action id="closeAction" type="detail_close"/>
     </actions>
     <layout>
-        <formLayout id="form" dataContainer="projectDc">
-            <responsiveSteps>
-                <responsiveStep minWidth="0" columns="1"/>
-                <responsiveStep minWidth="40em" columns="2"/>
-            </responsiveSteps>
-            <textField id="nameField" property="name"/>
-            <checkbox id="isRunningField" property="isRunning"/>
+        <hbox id="formWrapper">
+            <formLayout id="form" dataContainer="projectDc">
+                <responsiveSteps>
+                    <responsiveStep minWidth="0" columns="1"/>
+                    <responsiveStep minWidth="40em" columns="2"/>
+                </responsiveSteps>
+                <textField id="nameField" property="name"/>
+                <checkbox id="isRunningField" property="isRunning"/>
 
-            <hbox>
-                <fileStorageUploadField id="attachmentField" property="attachment" fileNameVisible="true" />
-                <button id="clearFile" text="Clear and delete"/>
-            </hbox>
-        </formLayout>
+                <hbox>
+                    <fileStorageUploadField id="attachmentField"
+                                            property="attachment"
+                                            fileNameVisible="true"
+                                            uploadText="Фото"
+                    fileStorageName="myfs"/>
+                    <button id="clearFile" text="Clear and delete"/>
+                </hbox>
+            </formLayout>
+            <image id="fileImage" dataContainer="projectDc" property="attachment" width="20em" height="20em" themeNames="scale-down"/>
+        </hbox>
         <h4 text="Tasks"/>
         <dataGrid id="tasksDataGrid" dataContainer="tasksDc" minWidth="100px" width="100%">
             <actions>
